@@ -10,5 +10,6 @@
 # <bitbar.abouturl>http://url-to-about.com/</bitbar.abouturl>
 # <bitbar.droptypes>Supported UTI's for dropping things on menu bar</droptypes.abouturl>
 
-
-curl https://coronavirus.jhu.edu/vaccines/us-states | sed -En 's/.*last updated on <!-- -->(.*)<!-- -->\..*$/\1/p'
+echo "IL Vax"
+---
+curl -s https://jhucoronavirus.azureedge.net/jhucoronavirus/state_vaccination_rates.json | sed -En 's/.*"Illinois","data":{"doses_admin":([0-9.]+),"raw_full_vac":([0-9.]+),"percent_full_vac":([0-9.]+),"per100k_full_val":([0-9.]+),"date":([0-9.]+).*/Total Doses: \1\nFully Vaxed: \2\nFully Vaxed percent: \3\nFully Vaxed per 100k: \4\nDate: \5/p'
